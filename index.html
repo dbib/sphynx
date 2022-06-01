@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sphynx</title>
+</head>
+<body>
+    <div class="global-box">
+        <div class="command-box command-container">
+            <div class="artwork-container small">
+                <img src="icons/Cover.jpg" alt="music-cover" id="cover">
+            </div>
+            <div class="data-container">
+                <audio src="" id="audio"></audio>
+                <h5 class="song-title-box">FRIENDS</h5>
+                <h6 class="artist-box">BEYONCE</h6>
+                <h6 class="album-box">Beyonce-album</h6>
+                <div class="progress-bar-box">              
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="actual-time"></div>
+                    <div class="state-options">
+                        <i class="minimize">
+                            <img src="icons/big.png" alt="big">
+                        </i>
+                        <i class="maximize hidden">
+                            <img src="icons/small.png" alt="small">
+                        </i>
+                    </div>
+                    
+                </div>
+        
+                <div class="navigation-container">
+                    <button id="prev" class="action-btn">
+                        <i class="icon-class">
+                            <img src="icons/previous.png" alt="previous">
+                        </i>
+                    </button>
+                    <button id="play" class=" action-btn-big">
+                        <i class="icon-class play-icon-tag">
+                            <img src="icons/play.png" alt="play">
+                        </i>
+                        <i class="icon-class pause-icon-tag hidden">
+                            <img src="icons/pause.png" alt="pause">
+                        </i>
+                    </button>
+                    <button id="next" class="action-btn">
+                        <i class="icon-class">
+                            <img src="icons/next.png" alt="next">
+                        </i>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+        <div class="contents-box">
+            <div class="add-options">
+                <div class="select-container">
+                    <select name="options-display" id = "alb-songs">
+                        <option value="songs" >Songs</option>
+                        <option value = "album">Albums</option>
+                    </select> 
+                </div>
+                <div class="add-songs-container">
+                    <button> Add Songs</button>
+                </div>
+            </div>
+            <ul class="content-container"></ul>
+        </div>
+    </div>
+</body>
+</html>

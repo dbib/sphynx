@@ -1,0 +1,17 @@
+{
+  "name": "sphynx-player",
+  "version": "0.0.1",
+  "description": "\"Modern music player, with beautiful disign\"",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "\"DonBach\"",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^18.2.3"
+  },
+  "dependencies": {
+    "jsmediatags": "^3.9.7"
+  }
+}
