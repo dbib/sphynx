@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
         for (const file of files) {
             // Let get the access to the file
             const singleFile = path.join(__dirname, file);
-            if (path.extname(singleFile) === ".mp3") {
+            if (path.extname(singleFile) == ".mp3" || path.extname(singleFile) == ".flac") {
                 songsList.push(file)
             } else {
                 console.log(`could not add ${file}, because it is not a mp3`);
@@ -62,29 +62,25 @@ window.addEventListener('DOMContentLoaded', ()=> {
         const commandBox = document.querySelector('.command-box');
         const maximizeAll = document.querySelector('.maximize');
         const minimizeAll = document.querySelector(".minimize");
-        const opt = document.querySelector("#alb-songs");
-
-        let selectValue = opt.options[opt.selectedIndex].text;
-        console.log(selectValue);
-
-        opt.addEventListener('change', () => {
-            selectValue = opt.options[opt.selectedIndex].text;
-            console.log(selectValue);
-        })
-
-
-        
-        // Keep track of the songs and song meta data
-        let sdata = {};
+        const shUnactive = document.querySelector(".sh-unactive");
+        const shActive = document.querySelector(".sh-active");
+        const shOptions = document.querySelector(".shuffle-options")
 
         let songIndex = 0;
         loadSong(songsList[songIndex]);
 
         // load Song and song meta data
         function loadSong(song) {
-            songTitle.innerText = song;
-            audio.src = `music/${song}`;
-            jsmediatags.read(`music/${song}`, {
+            let waiter = '';
+            if(shOptions.classList.contains('mixed')){
+                const random = Math.floor(Math.random() * songsList.length);
+                waiter = songsList[random];
+            } else {
+                waiter = song;
+            }
+            songTitle.innerText = waiter;
+            audio.src = `music/${waiter}`;
+            jsmediatags.read(`music/${waiter}`, {
                 onSuccess: (tag) => {
                     artistName.innerText = tag.tags.artist;
                     albumName.innerText = tag.tags.album;
@@ -106,9 +102,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
             navContainer.classList.add('play');
             playBtn.querySelector('.play-icon-tag').classList.add('hidden');
             playBtn.querySelector('.pause-icon-tag').classList.remove('hidden');
-            audio.play()
-
-
+            audio.play();
         }
 
         // Pause Song
@@ -116,7 +110,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
             navContainer.classList.remove('play');
             playBtn.querySelector('.pause-icon-tag').classList.add('hidden');
             playBtn.querySelector('.play-icon-tag').classList.remove('hidden');
-            audio.pause()
+            audio.pause();
         }
 
         // Prev
@@ -183,6 +177,14 @@ window.addEventListener('DOMContentLoaded', ()=> {
             }
         });
 
+        
+        prevBtn.addEventListener('click', prevSong);
+        nextBtn.addEventListener('click', nextSong);
+        
+        // Playing next song automatically
+        audio.addEventListener('ended', nextSong);
+        progressContainer.addEventListener('click', setProgress);
+
         minimizeAll.addEventListener('click', () => {
             maximizeAll.classList.remove('hidden');
             minimizeAll.classList.add('hidden');
@@ -198,15 +200,19 @@ window.addEventListener('DOMContentLoaded', ()=> {
             commandBox.classList.remove('command-container-bis');
             contentsBox.classList.remove('hidden');
 
-        })
+        });
 
-        
-        prevBtn.addEventListener('click', prevSong);
-        nextBtn.addEventListener('click', nextSong);
-        
-        // Playing next song automatically
-        audio.addEventListener('ended', nextSong);
-        progressContainer.addEventListener('click', setProgress);
+        shUnactive.addEventListener('click', () => {
+            shActive.classList.remove('hidden');
+            shUnactive.classList.add('hidden');
+            shOptions.classList.add('mixed');
+        });
+
+        shActive.addEventListener('click', () => {
+            shUnactive.classList.remove('hidden');
+            shActive.classList.add('hidden');
+            shOptions.classList.remove('mixed');
+        });
 
     }
     checkSongs();

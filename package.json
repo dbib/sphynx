@@ -12,6 +12,9 @@
     "electron": "^18.2.3"
   },
   "dependencies": {
+    "glob": "^8.0.3",
+    "globby": "^13.1.1",
+    "i": "^0.3.7",
     "jsmediatags": "^3.9.7"
   }
 }

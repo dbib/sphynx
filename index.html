@@ -11,7 +11,7 @@
     <div class="global-box">
         <div class="command-box command-container">
             <div class="artwork-container small">
-                <img src="icons/Cover.jpg" alt="music-cover" id="cover">
+                <img src="" alt="music-cover" id="cover">
             </div>
             <div class="data-container">
                 <audio src="" id="audio"></audio>
@@ -23,6 +23,14 @@
                         <div class="progress"></div>
                     </div>
                     <div class="actual-time"></div>
+                    <div class="shuffle-options">
+                        <i class="sh-unactive">
+                            <img src="icons/shuffle.png">
+                        </i>
+                        <i class="sh-active hidden">
+                            <img src="icons/shuffle-active.png">
+                        </i>
+                    </div>
                     <div class="state-options">
                         <i class="minimize">
                             <img src="icons/big.png" alt="big">
@@ -58,17 +66,6 @@
             </div>
         </div>
         <div class="contents-box">
-            <div class="add-options">
-                <div class="select-container">
-                    <select name="options-display" id = "alb-songs">
-                        <option value="songs" >Songs</option>
-                        <option value = "album">Albums</option>
-                    </select> 
-                </div>
-                <div class="add-songs-container">
-                    <button> Add Songs</button>
-                </div>
-            </div>
             <ul class="content-container"></ul>
         </div>
     </div>
