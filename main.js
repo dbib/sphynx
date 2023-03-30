@@ -14,6 +14,8 @@ const createWindow = () => {
     win.loadFile('index.html')
 }
 
+
+// Create the app window when the app is ready to run
 app.whenReady().then(() => {
     createWindow()
 })

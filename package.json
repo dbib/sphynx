@@ -1,6 +1,6 @@
 {
-  "name": "sphynx-player",
-  "version": "0.0.1",
+  "name": "sphynx",
+  "version": "0.0.2",
   "description": "\"Modern music player, with beautiful disign\"",
   "main": "main.js",
   "scripts": {
